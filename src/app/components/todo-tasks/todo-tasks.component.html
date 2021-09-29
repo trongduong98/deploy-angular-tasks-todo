@@ -1,0 +1,51 @@
+
+<div id="body" >
+    <div class="example-container">
+      <h2>To do</h2>
+  
+      <div
+        cdkDropList
+        #todo="cdkDropList"
+        [cdkDropListData]="todoItems"
+        class="example-list"
+        [cdkDropListConnectedTo]="[inProcessing]"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box todo" *ngFor="let item of todoItems" cdkDrag [cdkDragData]="item" (dblclick)="openDialog(item.id)">
+            <span>{{item.id}}</span>{{item.name}}({{item.status}})
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+        <h2>In Processing</h2>
+    
+        <div
+          cdkDropList
+          #inProcessing="cdkDropList"
+          [cdkDropListData]="inProcessingItems"
+          class="example-list"
+          [cdkDropListConnectedTo]="[todo, done]"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box inProcessing" *ngFor="let item of inProcessingItems" cdkDrag [cdkDragData]="item" (dblclick)="openDialog(item.id)">
+            <span>{{item.id}}</span>{{item.name}}({{item.status}})
+        </div>
+        </div>
+      </div>
+  
+    <div class="example-container">
+      <h2>Done</h2>
+  
+      <div
+        cdkDropList
+        #done="cdkDropList"
+        [cdkDropListData]="doneItems"
+        class="example-list"
+        [cdkDropListConnectedTo]="[inProcessing]"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box done" *ngFor="let item of doneItems" cdkDrag [cdkDragData]="item" (dblclick)="openDialog(item.id)">
+            <span>{{item.id}}</span>{{item.name}}({{item.status}})
+        </div>
+      </div>
+    </div>
+</div>
+

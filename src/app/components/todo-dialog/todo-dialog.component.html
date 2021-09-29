@@ -1,0 +1,21 @@
+<form (ngSubmit)="onSubmit()">
+    <div class="box-update-status" >
+        <h2>TASK</h2>
+        <span>name: {{name}} &nbsp; id:{{id}}</span>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Status</mat-label>
+                <mat-select [(value)]="select">
+                  <mat-option>None</mat-option>
+                  <mat-option value="todo">Todo</mat-option>
+                  <mat-option value="inProcessing">In Processing</mat-option>
+                  <mat-option value="done">Done</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div>
+            <button mat-raised-button color="primary" type="submit">save</button>
+        </div>
+    </div>
+</form>
+
